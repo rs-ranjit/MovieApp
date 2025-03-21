@@ -3,13 +3,13 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { TextInput } from "react-native-gesture-handler";
 
-const SearchBar = () => {
+const SearchBar = ({ placeholder, onPress }) => {
   return (
     <View className="flex-row items-center bg-dark-200 rounded-full px-5 py-4">
       <Ionicons name="search" size={30} color="purple" />
       <TextInput
-        onPress={() => {}}
-        placeholder="Search"
+        onPress={onPress}
+        placeholder={placeholder}
         value=""
         onChangeText={() => {}}
         placeholderTextColor="#a5b5db"

@@ -1,8 +1,15 @@
-import { View, Text, Image, ScrollView } from "react-native";
+import { View, Image, ScrollView } from "react-native";
 import React from "react";
 import SearchBar from "./SearchScreen";
+import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
+  const navigation = useNavigation();
+
+  const handleSearchPress = () => {
+    navigation.push("Search"); // Correct way to navigate to the Search screen
+  };
+
   return (
     <View className="flex-1 bg-primary">
       <ScrollView
@@ -16,7 +23,10 @@ const Home = () => {
         />
 
         <View className="flex-1 mt-5">
-          <SearchBar />
+          <SearchBar
+            onPress={handleSearchPress}
+            placeholder="Search for a movie"
+          />
         </View>
       </ScrollView>
     </View>

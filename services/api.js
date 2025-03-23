@@ -17,20 +17,21 @@ export const TMDB_CONFIG = {
  * @param {string} query - The movie name to search for (optional)
  * @returns {Promise<Array>} - List of movies
  */
-
 export const fetchMovies = async (query = "") => {
   try {
-    const endpoint = query ? "/search/movie" : "/discover/movie"; // Use search if query is provided
+    const searchQuery = query.trim(); // Trim query to avoid issues
+    const endpoint = searchQuery ? "/search/movie" : "/discover/movie"; // Use search if query is provided
+
+    const params = searchQuery
+      ? { query: searchQuery, include_adult: false, language: "en-US", page: 1 }
+      : { sort_by: "popularity.desc" };
 
     const response = await axios.get(`${TMDB_CONFIG.BASE_URL}${endpoint}`, {
-      params: {
-        query: query || undefined, // Only include query if searching
-        sort_by: query ? undefined : "popularity.desc", // Sorting only for discover
-        api_key: TMDB_CONFIG.API_KEY,
-      },
+      params,
       headers: TMDB_CONFIG.HEADERS,
     });
 
+    console.log("Movies fetched:", response.data.results);
     return response.data.results;
   } catch (error) {
     console.error("Error fetching movies:", error.message);

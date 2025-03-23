@@ -7,10 +7,11 @@ import {
   FlatList,
 } from "react-native";
 import React from "react";
-import SearchBar from "./SearchScreen";
+import SearchBar from "../components/SearchBar";
 import { useNavigation } from "@react-navigation/native";
 import useFetch from "../../services/useFetch";
 import { fetchMovies } from "../../services/api";
+import MovieCard from "../components/MovieCard";
 
 const Home = () => {
   const navigation = useNavigation();
@@ -48,36 +49,30 @@ const Home = () => {
         ) : (
           <View className="flex-1 mt-5">
             <SearchBar
-              onPress={handleSearchPress}
+              onPress={() => navigation.push("Search")}
               placeholder="Search for a movie"
             />
           </View>
         )}
+        <View>
+          <Text className="text-lg text-white font-bold mt-5 mb-3">
+            Latest Movies
+          </Text>
+          <FlatList
+            data={movies}
+            renderItem={({ item }) => <MovieCard {...item} />}
+            numColumns={3}
+            keyExtractor={(item) => item.id.toString()}
+            columnWrapperStyle={{
+              justifyContent: "flex-start",
+              gap: 20,
+              paddingRight: 5,
+              marginBottom: 10,
+            }}
+            className="mt-2 pb-32"
+          />
+        </View>
       </ScrollView>
-
-      <View>
-        <Text className="text-lg text-white font-bold mt-5 mb-3">
-          Latest Movies
-        </Text>
-        <FlatList
-          data={movies}
-          keyExtractor={(item) => item.id.toString()}
-          numColumns={3}
-          nestedScrollEnabled={true} // Enables nested scrolling for FlatList inside ScrollView
-          renderItem={({ item }) => (
-            <View className="flex-1 m-1 bg-gray-800 p-3 rounded-lg">
-              <Image
-                source={{
-                  uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`, // Display movie poster image
-                }}
-                style={{ width: 100, height: 150 }}
-                className="rounded-lg"
-              />
-              <Text className="text-white text-sm mt-2">{item.title}</Text>
-            </View>
-          )}
-        />
-      </View>
     </View>
   );
 };

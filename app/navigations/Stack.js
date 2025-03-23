@@ -3,6 +3,7 @@ import HomeScreen from "../tabs/HomeScreen";
 import SearchScreen from "../tabs/SearchScreen";
 import SavedScreen from "../tabs/SavedScreen";
 import ProfileScreen from "../tabs/ProfileScreen";
+import MovieDetail from "../tabs/MovieDetail";
 
 const SearchStack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
@@ -17,6 +18,7 @@ export const HomeStackNavigation = () => {
     >
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Search" component={SearchScreen} />
+      <Stack.Screen name="MovieDetail" component={MovieDetail} />
     </Stack.Navigator>
   );
 };
@@ -25,6 +27,7 @@ export function SearchStackScreen() {
   return (
     <SearchStack.Navigator screenOptions={{ headerShown: false }}>
       <SearchStack.Screen name="Search" component={SearchScreen} />
+      <Stack.Screen name="MovieDetail" component={MovieDetail} />
     </SearchStack.Navigator>
   );
 }

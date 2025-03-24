@@ -10,7 +10,6 @@ const useFetch = (fetchFunction, query = "", autoFetch = true) => {
       setLoading(true);
       setError(null);
 
-      // Pass query to fetchFunction (fetchMovies)
       const result = await fetchFunction(query);
 
       setData(result);
@@ -31,7 +30,7 @@ const useFetch = (fetchFunction, query = "", autoFetch = true) => {
     if (autoFetch) {
       fetchData();
     }
-  }, [query]); // Re-run the effect if the query changes
+  }, [query]);
 
   return { data, loading, error, refetch: fetchData, reset };
 };

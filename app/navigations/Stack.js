@@ -17,7 +17,6 @@ export const HomeStackNavigation = () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Search" component={SearchScreen} />
       <Stack.Screen name="MovieDetail" component={MovieDetail} />
     </Stack.Navigator>
   );

@@ -31,7 +31,6 @@ export const fetchMovies = async (query = "") => {
       headers: TMDB_CONFIG.HEADERS,
     });
 
-    console.log("Movies fetched:", response.data.results);
     return response.data.results;
   } catch (error) {
     console.error("Error fetching movies:", error.message);

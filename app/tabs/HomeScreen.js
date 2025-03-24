@@ -7,9 +7,9 @@ import {
   FlatList,
 } from "react-native";
 import React from "react";
-import SearchBar from "../components/SearchBar";
 import { useNavigation } from "@react-navigation/native";
 import useFetch from "../../services/useFetch";
+import SearchBar from "../components/SearchBar";
 import { fetchMovies } from "../../services/api";
 import MovieCard from "../components/MovieCard";
 
@@ -17,14 +17,14 @@ const Home = () => {
   const navigation = useNavigation();
 
   const handleSearchPress = () => {
-    navigation.push("Search"); // Correct way to navigate to the Search screen
+    navigation.navigate("SearchTab");
   };
 
   const {
     data: movies,
     loading: movieLoading,
     error: movieError,
-  } = useFetch(() => fetchMovies("")); // Fetch popular movies by passing empty string for query
+  } = useFetch(() => fetchMovies(""));
 
   return (
     <View className="flex-1 bg-primary">
@@ -49,7 +49,7 @@ const Home = () => {
         ) : (
           <View className="flex-1 mt-5">
             <SearchBar
-              onPress={() => navigation.push("Search")}
+              onPress={handleSearchPress}
               placeholder="Search for a movie"
             />
           </View>

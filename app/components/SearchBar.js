@@ -8,6 +8,7 @@ const SearchBar = ({ placeholder, onPress, value, onChangeText }) => {
     <View className="flex-row items-center bg-dark-200 rounded-full px-5 py-4">
       <Ionicons name="search" size={30} color="purple" />
       <TextInput
+        onPress={onPress}
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}

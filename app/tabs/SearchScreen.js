@@ -30,7 +30,6 @@ const SearchScreen = () => {
   useEffect(() => {
     const timeoutId = setTimeout(async () => {
       if (searchQuery.trim()) {
-        console.log("Fetching movies with query:", searchQuery);
         loadMovies(); // Fetch movies when query changes
       } else {
         reset(); // Reset the results if query is empty

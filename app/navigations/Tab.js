@@ -33,38 +33,42 @@ const TabNavigation = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="HomeTab"
         component={HomeStackNavigation}
         options={{
+          title: "Home",
           tabBarIcon: ({ color }) => (
             <Ionicons name="home" size={20} color={color} />
           ),
         }}
       />
       <Tab.Screen
-        name="Search"
+        name="SearchTab"
         component={SearchStackScreen}
         options={{
+          title: "Search",
           tabBarIcon: ({ color }) => (
             <Ionicons name="search" size={20} color={color} />
           ),
         }}
       />
       <Tab.Screen
-        name="Saved"
+        name="SavedTab"
         component={SavedStackScreen}
         options={{
+          title: "Saved",
           tabBarIcon: ({ color }) => (
             <Ionicons name="bookmark" size={20} color={color} />
           ),
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name="ProfileTab"
         component={ProfileStackScreen}
         options={{
+          title: "Profile",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="person" size={20} color={color} />
+            <Ionicons name="person" size={24} color={color} />
           ),
         }}
       />

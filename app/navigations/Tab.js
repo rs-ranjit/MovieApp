@@ -6,19 +6,19 @@ import {
   SavedStackScreen,
   ProfileStackScreen,
 } from "./Stack";
-
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={({ route }) => ({
         tabBarLabelPosition: "below-icon",
         tabBarShowLabel: true,
         tabBarActiveTintColor: "purple",
         tabBarInactiveTintColor: "grey",
         tabBarLabelStyle: { fontSize: 12 },
-        headerShown: false, // Hide header for all screens
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: "#0f0d23",
           borderRadius: 50,
@@ -29,8 +29,12 @@ const TabNavigation = () => {
           overflow: "hidden",
           borderWidth: 1,
           borderColor: "black",
+          display:
+            getFocusedRouteNameFromRoute(route) === "MovieDetail"
+              ? "none"
+              : "flex",
         },
-      }}
+      })}
     >
       <Tab.Screen
         name="HomeTab"

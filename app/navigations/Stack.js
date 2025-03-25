@@ -9,7 +9,6 @@ const SearchStack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
 const ProfileStack = createNativeStackNavigator();
 const SavedStack = createNativeStackNavigator();
-
 export const HomeStackNavigation = () => {
   return (
     <Stack.Navigator
@@ -17,7 +16,13 @@ export const HomeStackNavigation = () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="MovieDetail" component={MovieDetail} />
+      <Stack.Screen
+        name="MovieDetail"
+        component={MovieDetail}
+        options={{
+          tabBarStyle: { display: "none" }, // Hide the tab bar on MovieDetail screen
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -26,7 +31,13 @@ export function SearchStackScreen() {
   return (
     <SearchStack.Navigator screenOptions={{ headerShown: false }}>
       <SearchStack.Screen name="Search" component={SearchScreen} />
-      <Stack.Screen name="MovieDetail" component={MovieDetail} />
+      <SearchStack.Screen
+        name="MovieDetail"
+        component={MovieDetail}
+        options={{
+          tabBarStyle: { display: "none" }, // Hide the tab bar on MovieDetail screen
+        }}
+      />
     </SearchStack.Navigator>
   );
 }

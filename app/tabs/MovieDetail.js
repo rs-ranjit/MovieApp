@@ -1,6 +1,14 @@
-import { Text, Image, View, ScrollView, ActivityIndicator } from "react-native";
+import {
+  Text,
+  Image,
+  View,
+  ScrollView,
+  ActivityIndicator,
+  TouchableOpacity,
+} from "react-native";
 import useFetch from "../../services/useFetch";
-import React from "react";
+import React, { use } from "react";
+import { useNavigation } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
 import { fetchMoviesDetails } from "../../services/api";
 import { Ionicons } from "@expo/vector-icons";
@@ -17,6 +25,10 @@ const MovieInfo = ({ label, value }) => {
 };
 
 const MovieDetail = () => {
+  const navigation = useNavigation();
+  const handleBackNavigation = () => {
+    navigation.navigate("Home");
+  };
   const route = useRoute();
   const { movieId } = route.params;
   const { data: movie, loading } = useFetch(() => fetchMoviesDetails(movieId));
@@ -75,8 +87,21 @@ const MovieDetail = () => {
               value={`$${Math.round(movie?.revenue / 1_000_000)} million `}
             />
           </View>
+          <MovieInfo
+            label="Production Companies"
+            value={
+              movie?.production_companies.map((c) => c.name).join("-") || "N/A"
+            }
+          />
         </View>
       </ScrollView>
+      <TouchableOpacity
+        className="absolute bottom-5 left-0 right-0 mx-5 bg-accent rounded-lg py-3.5 flex flex-row items-center z-50 justify-center"
+        onPress={handleBackNavigation}
+      >
+        <Ionicons name="arrow-back" size={25} color="white" />
+        <Text className="text-white font-semibold text-base">Go back</Text>
+      </TouchableOpacity>
     </View>
   );
 };

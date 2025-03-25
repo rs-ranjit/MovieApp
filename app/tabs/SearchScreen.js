@@ -49,7 +49,7 @@ const SearchScreen = () => {
     <View className="flex-1 bg-primary">
       <FlatList
         data={movies}
-        renderItem={({ item }) => <MovieCard {...item} />}
+        renderItem={({ item }) => <MovieCard {...item} movie_id={item.id} />}
         keyExtractor={(item) => item.id.toString()}
         className="px-5"
         numColumns={3}

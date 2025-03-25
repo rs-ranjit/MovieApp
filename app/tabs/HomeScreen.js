@@ -12,6 +12,8 @@ import useFetch from "../../services/useFetch";
 import SearchBar from "../components/SearchBar";
 import { fetchMovies } from "../../services/api";
 import MovieCard from "../components/MovieCard";
+import { getTrendingMovies } from "../../services/appwrite";
+import TrendingCard from "../components/TrendingCard";
 
 const Home = () => {
   const navigation = useNavigation();
@@ -19,6 +21,12 @@ const Home = () => {
   const handleSearchPress = () => {
     navigation.navigate("SearchTab");
   };
+
+  const {
+    data: trendingMovies,
+    loading: trendingLoading,
+    error: trendingError,
+  } = useFetch(getTrendingMovies);
 
   const {
     data: movies,
@@ -38,22 +46,41 @@ const Home = () => {
           className="w-12 h-10 mt-0 mb-5 mx-auto"
         />
 
-        {movieLoading ? (
+        {movieLoading || trendingLoading ? (
           <ActivityIndicator
             size="large"
             color="#0000ff"
             className="mt-10 self-center"
           />
-        ) : movieError ? (
-          <Text>Error: {movieError?.message}</Text>
+        ) : movieError || trendingError ? (
+          <Text>Error: {movieError?.message || trendingError?.message}</Text>
         ) : (
           <View className="flex-1 mt-5">
             <SearchBar
               onPress={handleSearchPress}
               placeholder="Search for a movie"
             />
+
+            {trendingMovies && (
+              <View className="mt-19">
+                <Text className="text-lg text-white font-bold">
+                  Trending Movies{" "}
+                </Text>
+              </View>
+            )}
           </View>
         )}
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          ItemSeparatorComponent={() => <View className="w-4" />}
+          className="mb-4 mt-3"
+          data={trendingMovies}
+          renderItem={({ item, index }) => (
+            <TrendingCard {...item} index={index} />
+          )}
+          keyExtractor={(item) => item.movie_id.toString()}
+        />
         <View>
           <Text className="text-lg text-white font-bold mt-5 mb-3">
             Latest Movies

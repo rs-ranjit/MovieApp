@@ -37,3 +37,18 @@ export const fetchMovies = async (query = "") => {
     throw new Error("Failed to fetch movies");
   }
 };
+
+export const fetchMoviesDetails = async (movieId) => {
+  try {
+    const response = await axios.get(
+      `${TMDB_CONFIG.BASE_URL}/movie/${movieId}`,
+      {
+        headers: TMDB_CONFIG.HEADERS,
+      }
+    );
+    return response.data; // Axios automatically parses JSON
+  } catch (error) {
+    console.error("Error fetching movie details:", error.message);
+    throw error;
+  }
+};

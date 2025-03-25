@@ -76,9 +76,7 @@ const Home = () => {
           ItemSeparatorComponent={() => <View className="w-4" />}
           className="mb-4 mt-3"
           data={trendingMovies}
-          renderItem={({ item, index }) => (
-            <TrendingCard {...item} index={index} />
-          )}
+          renderItem={({ item }) => <TrendingCard {...item} />}
           keyExtractor={(item) => item.movie_id.toString()}
         />
         <View>
@@ -87,7 +85,9 @@ const Home = () => {
           </Text>
           <FlatList
             data={movies}
-            renderItem={({ item }) => <MovieCard {...item} />}
+            renderItem={({ item }) => (
+              <MovieCard {...item} movie_id={item.id} />
+            )}
             numColumns={3}
             keyExtractor={(item) => item.id.toString()}
             columnWrapperStyle={{

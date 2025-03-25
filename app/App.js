@@ -6,7 +6,7 @@ import TabNavigation from "./navigations/Tab";
 export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#030014" }}>
         <StatusBar />
         <NavigationContainer>
           <TabNavigation />

@@ -2,9 +2,8 @@ import { Image, TouchableOpacity, Text } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-const TrendingCard = ({ movie_id, title, poster_url, release_date, index }) => {
+const TrendingCard = ({ movie_id, title, poster_url, release_date }) => {
   const navigation = useNavigation();
-
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("MovieDetail", { movieId: movie_id })}

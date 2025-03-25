@@ -3,11 +3,17 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
-const MovieCard = ({ id, poster_path, title, vote_average, release_date }) => {
+const MovieCard = ({
+  movie_id,
+  poster_path,
+  title,
+  vote_average,
+  release_date,
+}) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("MovieDetail", { movieId: id })}
+      onPress={() => navigation.navigate("MovieDetail", { movieId: movie_id })}
       className="w-[30%]"
     >
       <Image

@@ -17,17 +17,6 @@ const SearchScreen = () => {
     reset,
   } = useFetch(() => fetchMovies(searchQuery), false);
 
-  // useEffect(() => {
-  //   const timeoutId = setTimeout(async () => {
-  //     if (searchQuery.trim()) {
-  //       await loadMovies(); // Load movies when query is not empty
-  //     } else {
-  //       reset(); // Reset the results if query is empty
-  //     }
-  //   }, 500);
-
-  //   return () => clearTimeout(timeoutId);
-  // }, [searchQuery]);
   useEffect(() => {
     const timeoutId = setTimeout(async () => {
       if (searchQuery.trim()) {

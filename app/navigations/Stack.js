@@ -38,6 +38,7 @@ export function SearchStackScreen() {
           tabBarStyle: { display: "none" }, // Hide the tab bar on MovieDetail screen
         }}
       />
+      <Stack.Screen name="Home" component={HomeScreen} />
     </SearchStack.Navigator>
   );
 }

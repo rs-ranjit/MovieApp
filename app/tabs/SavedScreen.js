@@ -1,13 +1,13 @@
-//tracking clicks in the heart  instead of searches and a second function to fetch all the saved movies
 import { View, Text } from "react-native";
 import React from "react";
+import { Ionicons } from "@expo/vector-icons";
 
-const Saved = () => {
+const SavedScreen = () => {
   return (
-    <View>
-      <Text>Saved</Text>
+    <View className="bg-primary flex-1 justify-center items-center">
+      <Ionicons name="bookmark" size={50} color="white" />
     </View>
   );
 };
 
-export default Saved;
+export default SavedScreen;

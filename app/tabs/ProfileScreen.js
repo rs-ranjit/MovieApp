@@ -38,12 +38,13 @@ const SavedScreen = () => {
 export default SavedScreen;
 const styles = StyleSheet.create({
   input: {
-    height: 40,
+    height: 60,
     width: 400,
-    margin: 20,
-    borderWidth: 1,
+    margin: 10,
     padding: 10,
+    borderWidth: 1,
     borderColor: "white",
+    backgroundColor: "#0f0d23",
     borderRadius: 10,
   },
   buttons: {

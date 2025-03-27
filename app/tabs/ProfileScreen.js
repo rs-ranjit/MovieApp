@@ -29,7 +29,7 @@ const SavedScreen = () => {
         onPress={() => Alert.alert("Login failed!")}
         style={styles.buttons}
       >
-        <Text className="text-grey p-2">Login In</Text>
+        <Text style={styles.text}>Login In</Text>
       </TouchableOpacity>
     </View>
   );
@@ -50,11 +50,10 @@ const styles = StyleSheet.create({
     width: 100,
     height: 40,
     borderRadius: 10,
-    backgroundColor: "#AB8BFF",
     borderColor: "white",
     borderWidth: 1,
-    textAlign: "center",
-    paddingLeft: 11,
+    justifyContent: "center",
+    alignItems: "center",
   },
   icons: {
     backgroundColor: "grey",
@@ -66,5 +65,8 @@ const styles = StyleSheet.create({
     opacity: 0.8,
     borderWidth: 1,
     borderColor: "white",
+  },
+  text: {
+    color: "#a5b5db",
   },
 });
